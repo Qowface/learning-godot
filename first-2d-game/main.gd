@@ -1,12 +1,20 @@
 extends Node
 
+const DATA_PATH = "user://data.cfg"
+
 @export var mob_scene: PackedScene
+
 var score
+var high_score
+var new_high_score
+
+var _config = ConfigFile.new()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	load_high_score()
+	$HUD.update_high_score(high_score)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +26,13 @@ func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	
-	$HUD.show_game_over()
+	if score > high_score:
+		new_high_score = true
+		save_high_score(score)
+		load_high_score()
+		$HUD.update_high_score(high_score)
+	
+	$HUD.show_game_over(new_high_score)
 	
 	$Music.stop()
 	$DeathSound.play()
@@ -26,6 +40,7 @@ func game_over():
 
 func new_game():
 	score = 0
+	new_high_score = false
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	
@@ -65,3 +80,13 @@ func _on_mob_timer_timeout():
 	mob.linear_velocity = velocity.rotated(direction)
 	
 	add_child(mob)
+
+
+func load_high_score():
+	_config.load(DATA_PATH)
+	high_score = _config.get_value("scoring", "high_score", 0)
+
+
+func save_high_score(new_score):
+	_config.set_value("scoring", "high_score", new_score)
+	_config.save(DATA_PATH)

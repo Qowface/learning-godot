@@ -19,18 +19,27 @@ func show_message(text):
 	$MessageTimer.start()
 
 
-func show_game_over():
+func show_game_over(new_high_score):
 	show_message("Game Over")
 	await $MessageTimer.timeout
+	
+	if new_high_score:
+		show_message("New High Score!")
+		await $MessageTimer.timeout
 	
 	$Message.text = "Dodge the Creeps!"
 	$Message.show()
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
+	$HighScoreLabel.show()
 
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
+
+
+func update_high_score(score):
+	$HighScoreLabel.text = "High Score: " + str(score)
 
 
 func _on_message_timer_timeout():
@@ -39,4 +48,5 @@ func _on_message_timer_timeout():
 
 func _on_start_button_pressed():
 	$StartButton.hide()
+	$HighScoreLabel.hide()
 	start_game.emit()
