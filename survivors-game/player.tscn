@@ -7,6 +7,7 @@
 radius = 29.4279
 
 [node name="Player" type="CharacterBody2D"]
+platform_floor_layers = 4294967294
 script = ExtResource("1_s5gmb")
 
 [node name="HappyBoo" parent="." instance=ExtResource("1_uk650")]
