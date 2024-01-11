@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://neo2n1d4dcyu"]
+[gd_scene load_steps=5 format=3 uid="uid://neo2n1d4dcyu"]
 
+[ext_resource type="Script" path="res://survivors_game.gd" id="1_ci3p5"]
 [ext_resource type="PackedScene" uid="uid://dj7hm4epgnppx" path="res://player.tscn" id="1_cn2db"]
-[ext_resource type="PackedScene" uid="uid://dxvle5px2lib0" path="res://mob.tscn" id="2_6n44y"]
 [ext_resource type="PackedScene" uid="uid://ctatwiclxxykv" path="res://pine_tree.tscn" id="2_a30c5"]
+
+[sub_resource type="Curve2D" id="Curve2D_ojhhx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, -128, 0, 0, 0, 0, 2048, -128, 0, 0, 0, 0, 2048, 1216, 0, 0, 0, 0, -128, 1216, 0, 0, 0, 0, -128, -128)
+}
+point_count = 5
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_ci3p5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -30
@@ -17,17 +24,13 @@ offset_bottom = 1080.0
 [node name="Player" parent="." instance=ExtResource("1_cn2db")]
 position = Vector2(960, 540)
 
-[node name="Mob" parent="." instance=ExtResource("2_6n44y")]
-position = Vector2(599, 351)
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-960, -540)
+curve = SubResource("Curve2D_ojhhx")
 
-[node name="Mob2" parent="." instance=ExtResource("2_6n44y")]
-position = Vector2(1093, 268)
-
-[node name="Mob3" parent="." instance=ExtResource("2_6n44y")]
-position = Vector2(1450, 598)
-
-[node name="Mob4" parent="." instance=ExtResource("2_6n44y")]
-position = Vector2(842, 955)
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-128, -128)
 
 [node name="PineTree" parent="." instance=ExtResource("2_a30c5")]
 position = Vector2(594, 767)
@@ -52,3 +55,9 @@ position = Vector2(1677, 646)
 
 [node name="PineTree8" parent="." instance=ExtResource("2_a30c5")]
 position = Vector2(722, 176)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
