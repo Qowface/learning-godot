@@ -17,4 +17,4 @@ func shoot():
 
 
 func _on_timer_timeout():
-	shoot()
+	if get_parent().visible: shoot()

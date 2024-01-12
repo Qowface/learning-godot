@@ -16,3 +16,5 @@ Repo for Godot tutorial projects.
 - "Create Your First 2D Game From Zero with Godot 4" tutorial from GDQuest.
     - https://www.gdquest.com/tutorial/godot/2d/first-2d-game-godot-4/
     - https://www.youtube.com/watch?v=GwCiGixlqiU
+- Additions:
+    - Handle restarting after game over.
