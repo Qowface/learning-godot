@@ -11,6 +11,10 @@ Repo for Godot tutorial projects.
 - Additions:
     - High scores using a ConfigFile.
 
+### speedy-saucer
+- First project from the "Complete Godot 2D" course on GameDev.tv.
+    - https://www.gamedev.tv/courses/2033279
+
 ### survivors-game
 
 - "Create Your First 2D Game From Zero with Godot 4" tutorial from GDQuest.
