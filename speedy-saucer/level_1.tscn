@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpy68kljilwd3"]
+[gd_scene load_steps=9 format=3 uid="uid://bpy68kljilwd3"]
 
 [ext_resource type="Texture2D" uid="uid://c0sbc7fb4qyt1" path="res://purple.png" id="1_0jpdw"]
 [ext_resource type="Script" path="res://level.gd" id="1_glnmy"]
@@ -10,6 +10,12 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_pg6da"]
 font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_skm8o"]
+font_size = 64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ng8k7"]
+radius = 32.0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_glnmy")
@@ -59,9 +65,46 @@ text = "Rules:
    you go outside of the maze"
 label_settings = SubResource("LabelSettings_pg6da")
 
+[node name="WinScreen" type="CanvasLayer" parent="Graphics"]
+layer = 10
+visible = false
+
+[node name="WinBackground" type="ColorRect" parent="Graphics/WinScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="WinLabel" type="Label" parent="Graphics/WinScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Win!"
+label_settings = SubResource("LabelSettings_skm8o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Player" parent="." instance=ExtResource("2_7xwet")]
 
 [node name="Maze" parent="." instance=ExtResource("3_o742p")]
 z_index = -50
 
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(857, -38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+position = Vector2(7, 3)
+shape = SubResource("CircleShape2D_ng8k7")
+
 [connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]
+[connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]

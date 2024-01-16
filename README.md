@@ -14,6 +14,8 @@ Repo for Godot tutorial projects.
 ### speedy-saucer
 - First project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279
+- Additions:
+    - Display win screen when player reaches end of maze.
 
 ### survivors-game
 
