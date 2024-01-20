@@ -4,6 +4,10 @@ Repo for Godot tutorial projects.
 
 ## Projects
 
+### alien-attack
+- Second project from the "Complete Godot 2D" course on GameDev.tv.
+    - https://www.gamedev.tv/courses/2033279
+
 ### first-2d-game
 
 - "Your first 2D game" tutorial from the Godot documentation.
