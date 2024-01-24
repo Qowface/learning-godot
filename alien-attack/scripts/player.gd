@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+signal took_damage
+
+
 @export var speed = 300
 var screen_size
 
@@ -40,3 +43,11 @@ func shoot():
 	rocket_container.add_child(rocket_instance)
 	rocket_instance.global_position = global_position
 	rocket_instance.global_position.x += 80
+
+
+func take_damage():
+	emit_signal("took_damage")
+
+
+func die():
+	queue_free()
