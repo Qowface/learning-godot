@@ -15,6 +15,10 @@ Repo for Godot tutorial projects.
 - Additions:
     - High scores using a ConfigFile.
 
+### martian-mike
+- Third project from the "Complete Godot 2D" course on GameDev.tv.
+    - https://www.gamedev.tv/courses/2033279
+
 ### speedy-saucer
 - First project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279
