@@ -35,6 +35,7 @@ func _physics_process(delta):
 
 
 func jump(force):
+	AudioPlayer.play_sfx("jump")
 	velocity.y = -force
 
 
