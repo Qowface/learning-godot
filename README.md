@@ -15,6 +15,11 @@ Repo for Godot tutorial projects.
 - Additions:
     - High scores using a ConfigFile.
 
+### grid-based-movement
+
+- "Grid-based movement" example
+    - https://kidscancode.org/godot_recipes/4.x/2d/grid_movement/index.html
+
 ### martian-mike
 - Third project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279

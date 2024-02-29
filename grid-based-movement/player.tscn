@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0oj1vjn82h4"]
+
+[ext_resource type="Texture2D" uid="uid://c2rowgtrotwc4" path="res://assets/sokoban_tilesheet.png" id="1_6tfjc"]
+[ext_resource type="Script" path="res://player.gd" id="1_7e1et"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaoca"]
+size = Vector2(50, 50)
+
+[sub_resource type="Animation" id="Animation_kjp6h"]
+resource_name = "down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [65, 66, 65, 67, 65]
+}
+
+[sub_resource type="Animation" id="Animation_r1hem"]
+resource_name = "up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [68, 69, 68, 70, 68]
+}
+
+[sub_resource type="Animation" id="Animation_wgiyt"]
+resource_name = "right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [91, 92, 91, 93, 91]
+}
+
+[sub_resource type="Animation" id="Animation_2cft5"]
+resource_name = "left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [94, 95, 94, 96, 94]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ev0e6"]
+_data = {
+"down": SubResource("Animation_kjp6h"),
+"left": SubResource("Animation_2cft5"),
+"right": SubResource("Animation_wgiyt"),
+"up": SubResource("Animation_r1hem")
+}
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_7e1et")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6tfjc")
+hframes = 13
+vframes = 8
+frame = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oaoca")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ev0e6")
+}
