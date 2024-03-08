@@ -14,6 +14,10 @@ Repo for Godot tutorial projects.
 - Additions:
     - High scores using a ConfigFile.
 
+### first-3d-game
+- "Your first 3D game" tutorial from the Godot documentation.
+    - https://docs.godotengine.org/en/stable/getting_started/first_3d_game/index.html
+
 ### grid-based-movement
 - "Grid-based movement" example
     - https://kidscancode.org/godot_recipes/4.x/2d/grid_movement/index.html
