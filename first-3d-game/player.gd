@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
 
+signal hit
+
+
 @export var speed = 14
 @export var fall_acceleration = 75
 @export var jump_impulse = 20
@@ -34,9 +37,6 @@ func _physics_process(delta):
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_impulse
 	
-	velocity = target_velocity
-	move_and_slide()
-	
 	# Iterate through all collisions that occurred this frame
 	for index in range(get_slide_collision_count()):
 		var collision = get_slide_collision(index)
@@ -51,3 +51,15 @@ func _physics_process(delta):
 				mob.squash()
 				target_velocity.y = bounce_impulse
 				break
+	
+	velocity = target_velocity
+	move_and_slide()
+
+
+func die():
+	hit.emit()
+	queue_free()
+
+
+func _on_mob_detector_body_entered(body):
+	die()
