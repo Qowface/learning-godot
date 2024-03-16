@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0clg61eo4ei6"]
+
+[ext_resource type="PackedScene" uid="uid://bx13aaeegnjpt" path="res://car.tscn" id="1_ny56t"]
+[ext_resource type="Texture2D" uid="uid://b186xxwenau6p" path="res://assets/texture_01.png" id="2_gindi"]
+[ext_resource type="Script" path="res://camera.gd" id="3_ltpt6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g22a1"]
+albedo_texture = ExtResource("2_gindi")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_70hly"]
+material = SubResource("StandardMaterial3D_g22a1")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1rae2"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfy6l"]
+albedo_texture = ExtResource("2_gindi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_okwbn"]
+material = SubResource("StandardMaterial3D_bfy6l")
+size = Vector3(20, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qigf1"]
+size = Vector3(20, 5, 5)
+
+[node name="Main" type="Node"]
+
+[node name="Car" parent="." instance=ExtResource("1_ny56t")]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_70hly")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_1rae2")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
+script = ExtResource("3_ltpt6")
+offset = Vector3(0, 3, 4)
+target = NodePath("../Car/CarMesh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ramp" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, -0.5, -8)
+mesh = SubResource("BoxMesh_okwbn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_qigf1")
+
+[editable path="Car"]

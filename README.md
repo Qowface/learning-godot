@@ -8,6 +8,10 @@ Repo for Godot tutorial projects.
 - Second project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279
 
+### arcade-style-car
+- "Arcade-style car" example
+    - https://kidscancode.org/godot_recipes/4.x/3d/3d_sphere_car/index.html
+
 ### first-2d-game
 - "Your first 2D game" tutorial from the Godot documentation.
     - https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html
