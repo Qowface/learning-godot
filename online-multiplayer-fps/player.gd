@@ -11,12 +11,22 @@ const GRAVITY = 20.0
 @onready var muzzle_flash = $Camera3D/Pistol/MuzzleFlash
 
 
+func _enter_tree():
+	set_multiplayer_authority(str(name).to_int())
+
+
 func _ready():
+	if not is_multiplayer_authority(): return
+	
 	# Lock the cursor.
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	camera.current = true
 
 
 func _unhandled_input(event):
+	if not is_multiplayer_authority(): return
+	
 	# Rotate player and camera based on mouse motion.
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * .005)
@@ -29,6 +39,8 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
