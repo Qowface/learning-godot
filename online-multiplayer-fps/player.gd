@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
 
+signal health_changed(health_value)
+
+
 const SPEED = 10.0
 const JUMP_VELOCITY = 10.0
 const GRAVITY = 20.0
@@ -91,6 +94,7 @@ func receive_damage():
 	if health <= 0:
 		health = 3
 		position = Vector3.ZERO
+	health_changed.emit(health)
 
 
 func _on_animation_player_animation_finished(anim_name):
