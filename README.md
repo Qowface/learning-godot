@@ -12,6 +12,10 @@ Repo for Godot tutorial projects.
 - "Arcade-style car" example
     - https://kidscancode.org/godot_recipes/4.x/3d/3d_sphere_car/index.html
 
+### brackeys-platformer
+- "Godot Beginner Tutorial" from Brackeys.
+    - https://www.youtube.com/watch?v=LOhfqjmasi0
+
 ### first-2d-game
 - "Your first 2D game" tutorial from the Godot documentation.
     - https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html
@@ -29,6 +33,10 @@ Repo for Godot tutorial projects.
 ### martian-mike
 - Third project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279
+
+### online-multiplayer-fps
+- "Online Multiplayer FPS" tutorial from DevLogLogan.
+    - https://www.youtube.com/watch?v=n8D3vEx7NAE
 
 ### pathfinding-2d-grid
 - "Pathfinding on a 2D Grid" example
