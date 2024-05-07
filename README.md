@@ -30,6 +30,10 @@ Repo for Godot tutorial projects.
 - "Grid-based movement" example
     - https://kidscancode.org/godot_recipes/4.x/2d/grid_movement/index.html
 
+### heartbeast-mini-course
+- "Make a game before the end of the day (in Godot 4)" from Heartbeast.
+    - https://www.youtube.com/watch?v=PjN9w_egTeA
+
 ### martian-mike
 - Third project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279
