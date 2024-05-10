@@ -4,6 +4,14 @@ Repo for Godot tutorial projects.
 
 ## Projects
 
+### SHADERS
+- flat-fire-shader
+    - "Flat Fire Shader Tutorial" from Heartbeast
+    - https://www.youtube.com/watch?v=sCIr_58NN48
+- godot-shader-basics
+    - "Godot 4 Shader Tutorial for Absolute Beginners" from Heartbeast
+    - https://www.youtube.com/watch?v=KeHKKLuygoY
+
 ### alien-attack
 - Second project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279
