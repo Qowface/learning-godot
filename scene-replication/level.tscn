@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmxsjgnq38y4r"]
+
+[ext_resource type="PackedScene" uid="uid://xennss7yjkd7" path="res://sphere.tscn" id="1_d8ahj"]
+[ext_resource type="Script" path="res://level.gd" id="1_giq73"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_esro2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7lmj1"]
+sky_material = SubResource("ProceduralSkyMaterial_esro2")
+
+[sub_resource type="Environment" id="Environment_7o60x"]
+background_mode = 2
+sky = SubResource("Sky_7lmj1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_urw5e"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nuy4a"]
+size = Vector3(10, 1, 10)
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_giq73")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7o60x")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4, 5)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_urw5e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_nuy4a")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Sphere" parent="Objects" instance=ExtResource("1_d8ahj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.16263, 0)
+
+[node name="Sphere2" parent="Objects" instance=ExtResource("1_d8ahj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.16263, 0)
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 4

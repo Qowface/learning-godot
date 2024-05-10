@@ -46,6 +46,10 @@ Repo for Godot tutorial projects.
 - "Pathfinding on a 2D Grid" example
     - https://kidscancode.org/godot_recipes/4.x/2d/grid_pathfinding/index.html
 
+### scene-replication
+- "Multiplayer in Godot 4.0: Scene Replication" tutorial from the Godot blog.
+    - https://godotengine.org/article/multiplayer-in-godot-4-0-scene-replication/
+
 ### speedy-saucer
 - First project from the "Complete Godot 2D" course on GameDev.tv.
     - https://www.gamedev.tv/courses/2033279
