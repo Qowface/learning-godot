@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b84d4co5sorc7"]
+
+[ext_resource type="Shader" path="res://flat_fire_background.gdshader" id="1_2xkmj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gp773"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dubnx"]
+width = 640
+height = 360
+seamless = true
+noise = SubResource("FastNoiseLite_gp773")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgurs"]
+shader = ExtResource("1_2xkmj")
+shader_parameter/yoffset = 0.6
+shader_parameter/animation_speed = 0.5
+shader_parameter/flame_color = Color(1, 0.252, 0.12, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_dubnx")
+
+[node name="FlatFireBackground" type="ColorRect"]
+material = SubResource("ShaderMaterial_vgurs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
