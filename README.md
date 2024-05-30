@@ -34,6 +34,10 @@ Repo for Godot tutorial projects.
 - "Your first 3D game" tutorial from the Godot documentation.
     - https://docs.godotengine.org/en/stable/getting_started/first_3d_game/index.html
 
+### fps-melee-attack
+- "FPS Melee Attack" tutorial from DevLogLogan.
+    - https://www.youtube.com/watch?v=qMBJaVL-vKc
+
 ### grid-based-movement
 - "Grid-based movement" example
     - https://kidscancode.org/godot_recipes/4.x/2d/grid_movement/index.html
