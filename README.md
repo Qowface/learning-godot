@@ -74,3 +74,7 @@ Repo for Godot tutorial projects.
     - https://www.youtube.com/watch?v=GwCiGixlqiU
 - Additions:
     - Handle restarting after game over.
+
+### tiled-dungeon-environment
+- "Tiled Dungeon Environment" tutorial from DevLogLogan.
+    - https://www.youtube.com/watch?v=VjuyfBaryu8
