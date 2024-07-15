@@ -22,6 +22,7 @@ var owner_id = 1
 var jump_count = 0
 var camera_instance
 var state = PlayerState.IDLE
+var current_interactable
 
 @onready var initial_sprite_scale = player_sprite.scale
 
@@ -56,6 +57,10 @@ func _physics_process(_delta):
 	
 	velocity.x = horizontal_input * movement_speed
 	velocity.y += gravity
+	
+	if Input.is_action_just_pressed("interact"):
+		if current_interactable != null:
+			current_interactable.interact.rpc_id(1)
 	
 	handle_movement_state()
 	
@@ -129,3 +134,12 @@ func handle_movement_state():
 	# Jump cancel
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y = 0.0
+
+
+func _on_interaction_handler_area_entered(area):
+	current_interactable = area
+
+
+func _on_interaction_handler_area_exited(area):
+	if current_interactable == area:
+		current_interactable = null
